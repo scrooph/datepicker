@@ -84,9 +84,14 @@ var $dp, WdatePicker; (function() {
     V = X;
     if (_.$crossFrame) {
         try {
+			//detect if there is a frame in the document 
+			//V.parent is the document`s parent
             while (V.parent[O] != V[O] && V.parent[O][C]("frameset").length == 0) V = V.parent
         } catch(P) {}
     }
+	//alert(X.parent[O][C]("input"));
+
+	//initialize the diplay arguments
     if (!V.$dp) V.$dp = {
         ff: I,
         ie: T,
@@ -98,11 +103,12 @@ var $dp, WdatePicker; (function() {
         defMaxDate: _.maxDate,
         flatCfgs: []
     };
+	//
     B();
     if ($dp.status == 0) Z(X,
     function() {
         U(null, true)
-    });
+    });  //E($, "onload", _)  Z($, _)
     if (!X[O].docMD) {
         E(X[O], "onmousedown", D);
         X[O].docMD = true
@@ -111,6 +117,7 @@ var $dp, WdatePicker; (function() {
         E(V[O], "onmousedown", D);
         V[O].docMD = true
     }
+	//X is the window object
     E(X, "onunload",
     function() {
         if ($dp.dd) Q($dp.dd, "none")
@@ -122,10 +129,10 @@ var $dp, WdatePicker; (function() {
     function B() {
         V.$dp = V.$dp || {};
         obj = {
-            $: function($) {
+            $: function($) { //get the value by id
                 return (typeof $ == "string") ? X[O].getElementById($) : $
             },
-            $D: function($, _) {
+            $D: function($, _) { //get value and _ assign?
                 return this.$DV(this.$($).value, _)
             },
             $DV: function(_, $) {
@@ -145,24 +152,24 @@ var $dp, WdatePicker; (function() {
                 return ""
             },
             show: function() {
-                Q(this.dd, "block")
+                Q(this.dd, "block")  //Q set display of a object
             },
             hide: function() {
                 Q(this.dd, "none")
             },
             attachEvent: E
         };
-        for (var $ in obj) V.$dp[$] = obj[$];
+        for (var $ in obj) V.$dp[$] = obj[$];  //this.dd ie $dp.dd
         $dp = V.$dp
     }
-    function E(A, $, _) {
-        if (T) A.attachEvent($, _);
+    function E(A, $, _) { //A stands a object(a node or widow or document),$ stands window property onload onmousedown
+        if (T) A.attachEvent($, _);  //windows IE
         else {
             var B = $.replace(/on/, "");
             _._ieEmuEventHandler = function($) {
                 return _($)
             };
-            A.addEventListener(B, _._ieEmuEventHandler, false)
+            A.addEventListener(B, _._ieEmuEventHandler, false) //dom2 addEventListener
         }
     }
 	//get wdatepicker.js`s path
@@ -330,7 +337,7 @@ var $dp, WdatePicker; (function() {
         }
     }
     var R, $;
-    function U(J, C) {
+    function U(J, C) {  //U(null, true)
         $dp.win = X;
         B();
         J = J || {};
@@ -406,7 +413,7 @@ var $dp, WdatePicker; (function() {
     function S(_, $) {
         return _.currentStyle ? _.currentStyle[$] : document.defaultView.getComputedStyle(_, false)[$]
     }
-    function Q(_, $) {
+    function Q(_, $) {  //usage:Q($dp.dd, "none") $dp.dd is getelemenById ie.g document id
         if (_) if ($ != null) _.style.display = $;
         else return S(_, "display")
     }
