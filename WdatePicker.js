@@ -252,7 +252,7 @@ var $dp, WdatePicker; (function() {
             "topM": _
         }
     }
-    function W(F) {
+    function W(F) { //get the size of Frame?
         if (F.getBoundingClientRect) return F.getBoundingClientRect();
         else {
             var A = {
