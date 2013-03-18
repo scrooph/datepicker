@@ -183,6 +183,7 @@ var $dp, WdatePicker; (function() {
         }
         return _
     }
+	//get the datapicker path
     function F(F) {
         var E, C;
         if (F.substring(0, 1) != "/" && F.indexOf("://") == -1) {
@@ -417,13 +418,14 @@ var $dp, WdatePicker; (function() {
         if (_) if ($ != null) _.style.display = $;
         else return S(_, "display")
     }
-    function K(H, $) {
+    function K(H, $) { //display the calendar selector
         for (var D in _) if (D.substring(0, 1) != "$") $dp[D] = _[D];
         for (D in H) if ($dp[D] !== undefined) $dp[D] = H[D];
         var E = $dp.el ? $dp.el.nodeName: "INPUT";
         if ($ || $dp.eCont || new RegExp(/input|textarea|div|span|p|a/ig).test(E)) $dp.elProp = E == "INPUT" ? "value": "innerHTML";
         else return;
-        if ($dp.lang == "auto") $dp.lang = T ? navigator.browserLanguage.toLowerCase() : navigator.language.toLowerCase();
+        if ($dp.lang == "auto") $dp.lang = T ? navigator.browserLanguage.toLowerCase() : navigator.language.toLowerCase();//auto get language
+		//alert(navigator.language.toLowerCase());
         if (!$dp.dd || $dp.eCont || ($dp.lang && $dp.realLang && $dp.realLang.name != $dp.lang && $dp.getLangIndex && $dp.getLangIndex($dp.lang) >= 0)) {
             if ($dp.dd && !$dp.eCont) V[O].body.removeChild($dp.dd);
             if (_.$dpPath == "") F(A);
@@ -443,6 +445,7 @@ var $dp, WdatePicker; (function() {
                     C()
                 }
             }
+			//alert($dp.dd);
         } else if ($dp.cal) {
             $dp.show();
             $dp.cal.init();
@@ -451,7 +454,7 @@ var $dp, WdatePicker; (function() {
         function C() {
             var F = $dp.position.left,
             B = $dp.position.top,
-            C = $dp.el;
+            C = $dp.el; //el is element tag for input
             if (C != $dp.srcEl && (Q(C) == "none" || C.type == "hidden")) C = $dp.srcEl;
             var H = W(C),
             $ = G(X),
