@@ -1,0 +1,9 @@
+create index idx_users_name on users(name asc);
+
+
+have researched the source code of php.familar with php and javascript language,have learnt java and C++.
+have been brother with the constructor of python language,we communicate with each other about python.you kown
+we have researched jquery much time.and have a rest for a long time.then we need to imporove the product and 
+create a googd mind in those programers` inner heart.
+with the development of w3,we have gone through the IT`s gloden years.if we want to make progress in this profession.
+we should drop those difference between us. and hands each other.go together,for the sun in internel technology.

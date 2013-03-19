@@ -132,12 +132,12 @@ var $dp, WdatePicker; (function() {
             $: function($) { //get the value by id
                 return (typeof $ == "string") ? X[O].getElementById($) : $
             },
-            $D: function($, _) { //get value and _ assign?
+            $D: function($, _) { //get value according $->id name
                 return this.$DV(this.$($).value, _)
             },
-            $DV: function(_, $) {
+            $DV: function(_, $) {  //value and $->a object
                 if (_ != "") {
-                    this.dt = $dp.cal.splitDate(_, $dp.cal.dateFmt);
+                    this.dt = $dp.cal.splitDate(_, $dp.cal.dateFmt); //according the format split the date result
                     if ($) for (var B in $) if (this.dt[B] === undefined) this.errMsg = "invalid property:" + B;
                     else {
                         this.dt[B] += $[B];
@@ -227,7 +227,7 @@ var $dp, WdatePicker; (function() {
             D.appendChild(_)
         }
     }
-    function Z($, _) {
+    function Z($, _) { // assign $ element onload affair then occuring _ 
         E($, "onload", _)
     }
     function G($) {
@@ -253,7 +253,7 @@ var $dp, WdatePicker; (function() {
             "topM": _
         }
     }
-    function W(F) { //get the size of Frame?
+    function W(F) { //get the size of an node
         if (F.getBoundingClientRect) return F.getBoundingClientRect();
         else {
             var A = {
@@ -438,7 +438,7 @@ var $dp, WdatePicker; (function() {
                 $dp.dd.style.cssText = "position:absolute;z-index:19700";
                 $dp.dd.innerHTML = B;
                 V[O].body.appendChild($dp.dd);
-                Z($dp.dd.childNodes[0], Y);
+                Z($dp.dd.childNodes[0], Y); //$dp.dd.childNodes[0] is iframe ,ie B
                 if ($) $dp.dd.style.left = $dp.dd.style.top = "-1970px";
                 else {
                     $dp.show();
@@ -451,10 +451,10 @@ var $dp, WdatePicker; (function() {
             $dp.cal.init();
             if (!$dp.eCont) C()
         }
-        function C() {
+        function C() { //config the dd`s position
             var F = $dp.position.left,
             B = $dp.position.top,
-            C = $dp.el; //el is element tag for input
+            C = $dp.el; //el is element tag for input  all variable is local
             if (C != $dp.srcEl && (Q(C) == "none" || C.type == "hidden")) C = $dp.srcEl;
             var H = W(C),
             $ = G(X),
